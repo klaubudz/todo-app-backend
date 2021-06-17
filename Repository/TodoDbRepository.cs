@@ -39,8 +39,11 @@ namespace Repository
         public void Delete(int id)
         {
             var entityToRemove = _todoContext.Todos.Find(id);
-            _todoContext.Todos.Remove(entityToRemove);
-            _todoContext.SaveChanges();
+            if (entityToRemove != null)
+            {
+                _todoContext.Todos.Remove(entityToRemove);
+                _todoContext.SaveChanges();
+            }
         }
 
         public Todo Edit(Todo entity)
